@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<p>
+    Count <a th:text="${count}">0</a>
+</p>
+
+<table class="table text-white">
+    <thead class=" table-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Detected</th>
+        <th scope="col" style="width: 0">
+            <a href="/drinks/create">
+                <button type="button" class="btn btn-primary">Create</button>
+            </a>
+        </th>
+    </tr>
+    </thead>
+    <tbody th:each="drink, iter: ${drinks}">
+        <tr>
+            <th scope="row" th:text="${drink.getId()}">?</th>
+            <td th:text="${drink.getName()}">?</td>
+
+            <th:block th:switch="${drink.getType().toString()}">
+                <td th:case="'THIRD_LITTER'">Third</td>
+                <td th:case="*">Other</td>
+            </th:block>
+
+            <td th:text="${drink.getPositions().size()}">?</td>
+            <td>
+                <a th:href="${'/drinks/create?data='+drink.getData()}">
+                    <button type="button" class="btn btn-primary">Copy</button>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

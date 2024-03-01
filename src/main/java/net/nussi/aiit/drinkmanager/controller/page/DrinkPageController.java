@@ -1,5 +1,6 @@
 package net.nussi.aiit.drinkmanager.controller.page;
 
+import net.nussi.aiit.drinkmanager.beans.DrinkModelConverter;
 import net.nussi.aiit.drinkmanager.model.DrinkModel;
 import net.nussi.aiit.drinkmanager.model.DrinkPositionModel;
 import net.nussi.aiit.drinkmanager.model.DrinkTypeModel;
@@ -11,13 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/drink")
+@RequestMapping("/drinks")
 public class DrinkPageController {
 
     @Autowired
@@ -25,6 +27,7 @@ public class DrinkPageController {
 
     @Autowired
     private DrinkPositionRepository drinkPositionRepository;
+
 
     @GetMapping
     public String get(Model model) {
@@ -38,24 +41,24 @@ public class DrinkPageController {
         model.addAttribute("drinks", drinkModels);
         model.addAttribute("count", drinkModels.size());
 
-        return "drink_page";
+
+        model.addAttribute("page", "drinks");
+        return "layout";
     }
 
-
-    @GetMapping("/{id}")
-    public String accountCreatePage(
-            Model model,
-            @PathVariable Long id
+    @GetMapping("/create")
+    public String create(
+            @RequestParam(required = false) String data,
+            Model model
     ) {
-        Optional<DrinkModel> optionalDrinkModel = drinkRepository.findById(id);
-        if (optionalDrinkModel.isEmpty())  {
-            model.addAttribute("message", "Username not found!");
-            return "drink_error";
-        }
-        DrinkModel drinkModel = optionalDrinkModel.get();
+        Optional<DrinkModel> optionalDrinkModel = DrinkModelConverter.fromString(data);
+        DrinkModel drinkModel = optionalDrinkModel.orElseGet(DrinkModel::new);
 
         model.addAttribute("drink", drinkModel);
-
-        return "drink_info";
+        model.addAttribute("page", "drinks_create");
+        return "layout";
     }
+
+
+
 }

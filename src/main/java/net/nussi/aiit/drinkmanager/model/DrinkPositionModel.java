@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.io.Serializable;
+
 
 @Entity
 @Getter
@@ -13,7 +15,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class DrinkPositionModel {
+public class DrinkPositionModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
