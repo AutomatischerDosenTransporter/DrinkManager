@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    body {
+        background-color: #1e1f22;
+        color: #ffffff;
+    }
+</style>
+<body>
+
+<h1>Drink Info</h1>
+<p>
+    Count <div th:text="${count}">0</div>
+</p>
+
+<ul th:each="drink: ${drinks}">
+    <li>
+        <a th:text="${drink.id}" th:href="${'drink/'+drink.id}"/>
+        <a th:text="${drink.name}">Name</a>
+    </li>
+</ul>
+</body>
+</html>
