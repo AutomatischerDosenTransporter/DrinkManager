@@ -1,0 +1,1 @@
+mvnw clean package && docker build . --tag registry.nussi.net/drink-manager:1.0 --no-cache

@@ -19,7 +19,7 @@ import java.util.Optional;
 public class DrinkModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long id;
 
     public String name;
@@ -33,4 +33,8 @@ public class DrinkModel implements Serializable {
         return optionalDrinkModel.orElse("");
     }
 
+    public Optional<String> isValid() {
+        if(this.name.isEmpty() || this.name.isBlank()) return Optional.of("Name is blank.");
+        return Optional.empty();
+    }
 }

@@ -26,6 +26,7 @@ public class DrinkModelConverter {
 
     public static Optional<DrinkModel> fromString(String data) {
         try {
+            if(data == null) return Optional.empty();
             byte[] decodedBytes = Base64.getDecoder().decode(data);
             ByteArrayInputStream bis = new ByteArrayInputStream(decodedBytes);
             ObjectInputStream ois = new ObjectInputStream(bis);

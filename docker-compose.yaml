@@ -14,6 +14,15 @@ services:
     volumes:
       - my-db:/var/lib/mysql
 
+  spring:
+    image: registry.nussi.net/drink-manager:1.0
+    ports:
+      - "80:8080"
+    links:
+      - db:database
+    depends_on:
+      - db
+
 # Names our volume
 volumes:
   my-db:

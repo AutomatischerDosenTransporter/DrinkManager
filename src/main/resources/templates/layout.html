@@ -37,7 +37,7 @@
                 <a class="navbar-brand" href="/">
                     Drink Manager
                 </a>
-                <a class="navbar-brand"  th:text="${page}"></a>
+<!--                <a class="navbar-brand"  th:text="${page}"></a>-->
 
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
@@ -61,6 +61,9 @@
                 </div>
                 <div th:case="'drinks_create'">
                     <div th:replace="pages/drinks_create"></div>
+                </div>
+                <div th:case="'drinks_edit'">
+                    <div th:replace="pages/drinks_edit"></div>
                 </div>
                 <div th:case="'index'">
                     <div th:replace="pages/index"></div>

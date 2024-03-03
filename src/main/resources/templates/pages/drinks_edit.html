@@ -1,11 +1,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <div style="display: flex; align-items: center; flex-direction: column">
-    <h1>Create Drink</h1>
-    <form action="#" th:action="@{/drinks/create}" th:object="${drink}" method="post" style="width: 26rem; margin: 0.5rem">
+    <h1>Edit Drink</h1>
+    <form action="#" th:action="@{/drinks/edit}" th:object="${drink}" method="post" style="width: 26rem; margin: 0.5rem">
+        <div class="form-group">
+            <label for="idInput">ID</label>
+            <input id="idInput" type="text" th:field="*{id}" class="form-control" placeholder="Enter ID">
+        </div>
+
         <div class="form-group">
             <label for="nameInput">Name</label>
-            <input id="nameInput" type="text" th:field="*{name}" class="form-control" aria-describedby="nameHelp" placeholder="Enter name">
+            <input id="nameInput" type="text" th:field="*{name}" class="form-control" placeholder="Enter name">
         </div>
 
         <div class="form-group">
@@ -18,8 +23,8 @@
         <div class="alert alert-danger" role="alert" th:if="${errorMessage!=''}" th:text="${errorMessage}" style="margin: 0.5rem 0;"></div>
 
         <p style="margin: 0.5rem 0.5rem 0 0">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="/drinks" class="btn btn-secondary" role="button">Back</a>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="/drinks" class="btn btn-secondary" role="button">Discard</a>
         </p>
     </form>
 </div>

@@ -11,6 +11,8 @@
         <th scope="col">Name</th>
         <th scope="col">Type</th>
         <th scope="col">Detected</th>
+        <th scope="col" style="width: 0"></th>
+        <th scope="col" style="width: 0"></th>
         <th scope="col" style="width: 0">
             <a href="/drinks/create">
                 <button type="button" class="btn btn-primary">Create</button>
@@ -23,14 +25,23 @@
             <th scope="row" th:text="${drink.getId()}">?</th>
             <td th:text="${drink.getName()}">?</td>
 
-            <th:block th:switch="${drink.getType().toString()}">
-                <td th:case="'THIRD_LITTER'">Third</td>
-                <td th:case="*">Other</td>
-            </th:block>
+            <td th:text="${drink.getType().displayText}"></td>
 
             <td th:text="${drink.getPositions().size()}">?</td>
+
+
             <td>
-                <a th:href="${'/drinks/create?data='+drink.getData()}">
+                <a th:href="${'/drinks/delete?id='+drink.getId()}">
+                    <button type="button" class="btn btn-primary">Delete</button>
+                </a>
+            </td>
+            <td>
+                <a th:href="${'/drinks/edit?id='+drink.getId()}">
+                    <button type="button" class="btn btn-primary">Edit</button>
+                </a>
+            </td>
+            <td>
+                <a th:href="${'/drinks/create?data='+drink.getId()}">
                     <button type="button" class="btn btn-primary">Copy</button>
                 </a>
             </td>
