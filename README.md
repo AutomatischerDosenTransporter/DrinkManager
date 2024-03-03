@@ -1,5 +1,7 @@
 # Drink Manger
 
+### Visit [https://drink.nussi.net]()
+
 ---
 ## How to host?
 
