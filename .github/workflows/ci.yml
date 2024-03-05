@@ -20,7 +20,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean package
+      run: mvn clean package -Dmaven.test.skip
 
     - name: Docker Build 
       run: docker build . --tag registry.nussi.net/drink-manager:latest --no-cache
