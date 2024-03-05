@@ -1,7 +1,7 @@
 # Drink Manger
 [![Java CI with Maven](https://github.com/AutomatischerDosenTransporter/DrinkManager/actions/workflows/ci.yml/badge.svg)](https://github.com/AutomatischerDosenTransporter/DrinkManager/actions/workflows/ci.yml)
 
-### Visit [https://drink.nussi.net]()
+### Visit [https://drink.nussi.net](https://drink.nussi.net)
 
 ---
 ## How to host?
